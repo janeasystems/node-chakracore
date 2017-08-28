@@ -19,16 +19,19 @@ CC_VER="4.9"
 case $ARCH in
     arm)
         DEST_CPU="$ARCH"
+        V8_ARCH="$ARCH"
         SUFFIX="$ARCH-linux-androideabi"
         TOOLCHAIN_NAME="$SUFFIX"
         ;;
     x86)
         DEST_CPU="ia32"
+        V8_ARCH="ia32"
         SUFFIX="i686-linux-android"
         TOOLCHAIN_NAME="$ARCH"
         ;;
     x86_64)
         DEST_CPU="ia32"
+        V8_ARCH="ia32"
         SUFFIX="$ARCH-linux-android"
         TOOLCHAIN_NAME="$ARCH"
         ;;
@@ -67,7 +70,7 @@ export CXX=$TOOLCHAIN/bin/$SUFFIX-clang++
 export LINK=$TOOLCHAIN/bin/$SUFFIX-clang++
 
 GYP_DEFINES="target_arch=$ARCH"
-GYP_DEFINES+=" v8_target_arch=$ARCH"
+GYP_DEFINES+=" v8_target_arch=$V8_ARCH"
 GYP_DEFINES+=" android_target_arch=$ARCH"
 if [ "$(uname -s)" == "Darwin" ]; then
     GYP_DEFINES+=" host_os=mac OS=android"
