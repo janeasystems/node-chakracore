@@ -35,6 +35,12 @@ case $ARCH in
         SUFFIX="$ARCH-linux-android"
         TOOLCHAIN_NAME="$ARCH"
         ;;
+    arm64)
+        DEST_CPU="arm64"
+        V8_ARCH="arm64"
+        SUFFIX="aarch64-linux-android"
+        TOOLCHAIN_NAME="aarch64"
+        ;;
     *)
         echo "Unsupported architecture provided: $ARCH"
         exit 1
