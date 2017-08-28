@@ -30,8 +30,8 @@ case $ARCH in
         TOOLCHAIN_NAME="$ARCH"
         ;;
     x86_64)
-        DEST_CPU="ia32"
-        V8_ARCH="ia32"
+        DEST_CPU="x64"
+        V8_ARCH="x64"
         SUFFIX="$ARCH-linux-android"
         TOOLCHAIN_NAME="$ARCH"
         ;;
