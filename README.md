@@ -3,7 +3,7 @@ Node.js on Mobile
 
 This project is an experimental fork of [nodejs/node-chakracore](https://github.com/nodejs/node-chakracore) bringing Node.js to mobile operating systems, as a library that can be embedded in mobile applications and frameworks.
 
-It currently only builds for Android (with V8), as a shared library for the `armeabi-v7a` architecture. Support for iOS and additional Android architectures are in the works and will be published soon.
+It currently only builds for Android (with V8), as a shared library for the `armeabi-v7a`, `x86`, `arm64-v8a` and `x86_64` architectures. Support for iOS is in the works and will be published soon.
 
 ##### Project Goals
 The goals of this project are:
@@ -73,14 +73,14 @@ git checkout mobile-master
 
 #### 2a) Using the Android helper script:
 
-The `tools/android_build.sh` script takes as first argument the Android NDK path (in our case is `~/android-ndk-r15c`). The second argument is optional and is the target architecture, by default is `arm`.
+The `tools/android_build.sh` script takes as first argument the Android NDK path (in our case is `~/android-ndk-r15c`). The second argument is optional and is the target architecture, which can be one of the following: `arm`, `x86`, `arm64` or `x86_64`. If no target architecture is provided, it will build all available architectures.
 Run:
 
 ```sh
 ./tools/android_build.sh ~/android-ndk-r15c
 ```
 
-When done, the built shared library will be placed in `out_android/arm/libnode.so`.
+When done, each built shared library will be placed in `out_android/$(ARCHITECTURE)/libnode.so`.
 
 #### 2b) Configure and build manually:
 Run the `android-configure` script to configure the build with the path to the downloaded NDK and the desired target architecture.
