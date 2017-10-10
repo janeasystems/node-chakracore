@@ -101,6 +101,7 @@ clean:
 	@if [ -d out ]; then find out/ -name '*.o' -o -name '*.a' -o -name '*.d' | xargs $(RM) -r; fi
 	$(RM) -r node_modules
 	@if [ -d deps/icu ]; then echo deleting deps/icu; $(RM) -r deps/icu; fi
+	@if [ -d deps/chakrashim/core/out ]; then echo deleting deps/chakrashim/core/out; $(RM) -r deps/chakrashim/core/out; fi
 	$(RM) test.tap
 
 distclean:
