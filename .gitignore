@@ -114,6 +114,8 @@ xcuserdata/
 *.xcuserstate
 project.xcworkspace
 tools/ios-framework/bin/
+out_ios/
+out_android/
 
 # libuv book and GitHub template
 deps/uv/.github/

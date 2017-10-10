@@ -17,7 +17,10 @@
 
     'conditions': [
       ['target_arch=="ia32"', { 'Platform': 'x86' }],
-      ['target_arch=="x64"', { 'Platform': 'x64' }],
+      ['target_arch=="x64"', {
+        'Platform': 'x64',
+        'chakra_build_flags+': [ '--arch=amd64' ],
+      }],
       ['target_arch=="arm"', {
         'Platform': 'arm',
       }],

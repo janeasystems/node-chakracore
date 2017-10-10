@@ -12,7 +12,10 @@ SCRIPT_DIR=${PWD}
 cd ../
 
 LIBRARY_PATH='out/Release'
-TARGET_LIBRARY_PATH='tools/ios-framework/bin'
+
+make clean
+
+TARGET_LIBRARY_PATH='tools/ios-framework/bin/arm64'
 
 ./configure --dest-os=ios --dest-cpu=arm64 --without-chakra-jit --enable-static --with-intl=none --openssl-no-asm
 make
@@ -28,5 +31,51 @@ cp $LIBRARY_PATH/libnode.a $TARGET_LIBRARY_PATH/
 cp $LIBRARY_PATH/libopenssl.a $TARGET_LIBRARY_PATH/
 cp $LIBRARY_PATH/libuv.a $TARGET_LIBRARY_PATH/
 cp $LIBRARY_PATH/libzlib.a $TARGET_LIBRARY_PATH/
+
+make clean
+
+TARGET_LIBRARY_PATH='tools/ios-framework/bin/x64'
+
+./configure --dest-os=ios --dest-cpu=x64 --without-chakra-jit --enable-static --with-intl=none --openssl-no-asm
+make
+
+mkdir -p $TARGET_LIBRARY_PATH
+
+cp $LIBRARY_PATH/libcares.a $TARGET_LIBRARY_PATH/
+cp $LIBRARY_PATH/libChakraCoreStatic.a $TARGET_LIBRARY_PATH/
+cp $LIBRARY_PATH/libchakrashim.a $TARGET_LIBRARY_PATH/
+cp $LIBRARY_PATH/libhttp_parser.a $TARGET_LIBRARY_PATH/
+cp $LIBRARY_PATH/libnghttp2.a $TARGET_LIBRARY_PATH/
+cp $LIBRARY_PATH/libnode.a $TARGET_LIBRARY_PATH/
+cp $LIBRARY_PATH/libopenssl.a $TARGET_LIBRARY_PATH/
+cp $LIBRARY_PATH/libuv.a $TARGET_LIBRARY_PATH/
+cp $LIBRARY_PATH/libzlib.a $TARGET_LIBRARY_PATH/
+
+TARGET_LIBRARY_PATH='tools/ios-framework/bin'
+
+lipo -create "$TARGET_LIBRARY_PATH/arm64/libcares.a" "$TARGET_LIBRARY_PATH/x64/libcares.a" -output "$TARGET_LIBRARY_PATH/libcares.a"
+lipo -create "$TARGET_LIBRARY_PATH/arm64/libChakraCoreStatic.a" "$TARGET_LIBRARY_PATH/x64/libChakraCoreStatic.a" -output "$TARGET_LIBRARY_PATH/libChakraCoreStatic.a"
+lipo -create "$TARGET_LIBRARY_PATH/arm64/libchakrashim.a" "$TARGET_LIBRARY_PATH/x64/libchakrashim.a" -output "$TARGET_LIBRARY_PATH/libchakrashim.a"
+lipo -create "$TARGET_LIBRARY_PATH/arm64/libhttp_parser.a" "$TARGET_LIBRARY_PATH/x64/libhttp_parser.a" -output "$TARGET_LIBRARY_PATH/libhttp_parser.a"
+lipo -create "$TARGET_LIBRARY_PATH/arm64/libnghttp2.a" "$TARGET_LIBRARY_PATH/x64/libnghttp2.a" -output "$TARGET_LIBRARY_PATH/libnghttp2.a"
+lipo -create "$TARGET_LIBRARY_PATH/arm64/libnode.a" "$TARGET_LIBRARY_PATH/x64/libnode.a" -output "$TARGET_LIBRARY_PATH/libnode.a"
+lipo -create "$TARGET_LIBRARY_PATH/arm64/libopenssl.a" "$TARGET_LIBRARY_PATH/x64/libopenssl.a" -output "$TARGET_LIBRARY_PATH/libopenssl.a"
+lipo -create "$TARGET_LIBRARY_PATH/arm64/libuv.a" "$TARGET_LIBRARY_PATH/x64/libuv.a" -output "$TARGET_LIBRARY_PATH/libuv.a"
+lipo -create "$TARGET_LIBRARY_PATH/arm64/libzlib.a" "$TARGET_LIBRARY_PATH/x64/libzlib.a" -output "$TARGET_LIBRARY_PATH/libzlib.a"
+
+#Create a path to build the frameworks into
+mkdir -p out_ios
+cd out_ios
+FRAMEWORK_TARGET_DIR=${PWD}
+cd ../
+
+NODELIB_PROJECT_PATH='tools/ios-framework'
+
+xcodebuild build -project $NODELIB_PROJECT_PATH/nodeLib.xcodeproj -target "libnode" -configuration Release -arch arm64 -sdk "iphoneos" SYMROOT=$FRAMEWORK_TARGET_DIR
+xcodebuild build -project $NODELIB_PROJECT_PATH/nodeLib.xcodeproj -target "libnode" -configuration Release -arch x86_64 -sdk "iphonesimulator" SYMROOT=$FRAMEWORK_TARGET_DIR
+cp -RL $FRAMEWORK_TARGET_DIR/Release-iphoneos $FRAMEWORK_TARGET_DIR/Release-universal
+lipo -create $FRAMEWORK_TARGET_DIR/Release-iphoneos/libnode.framework/libnode $FRAMEWORK_TARGET_DIR/Release-iphonesimulator/libnode.framework/libnode -output $FRAMEWORK_TARGET_DIR/Release-universal/libnode.framework/libnode
+
+echo "Frameworks built to $FRAMEWORK_TARGET_DIR"
 
 cd "$ROOT"

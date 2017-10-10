@@ -53,7 +53,8 @@ Revision History:
 #include <mach/mach_host.h>
 #endif // defined(__APPLE__)
 
-#if !(defined(__IOS__) && defined(_M_ARM64))
+#if !defined(__IOS__)
+//FIXME: Removed to build for iOS.
 // On some platforms sys/user.h ends up defining _DEBUG; if so
 // remove the definition before including the header and put
 // back our definition afterwards
@@ -67,7 +68,7 @@ Revision History:
 #define _DEBUG OLD_DEBUG
 #undef OLD_DEBUG
 #endif
-#endif // !(defined(__IOS__) && defined(_M_ARM64))
+#endif // !defined(__IOS__)
 
 #include "pal/dbgmsg.h"
 
@@ -104,7 +105,7 @@ SET_DEFAULT_DEBUG_CHANNEL(MISC);
 #endif // __LINUX__
 
 #ifdef __IOS__
-#ifdef _M_ARM64
+#ifdef BIT64
 // This is the size of the virtual address space on 64 bits IOS,
 // according to Apple, is 18 exabytes.
 #define MAX_PROCESS_VA_SPACE_IOS64 \
@@ -182,7 +183,7 @@ GetSystemInfo(
     lpSystemInfo->lpMaximumApplicationAddress = (PVOID) VM_MAXUSER_ADDRESS;
 #elif defined(__LINUX__)
     lpSystemInfo->lpMaximumApplicationAddress = (PVOID) MAX_PROCESS_VA_SPACE_LINUX;
-#elif defined(__IOS__)&&defined(_M_ARM64)
+#elif defined(__IOS__)&&defined(BIT64)
     lpSystemInfo->lpMaximumApplicationAddress = (PVOID) MAX_PROCESS_VA_SPACE_IOS64;
 #elif defined(USERLIMIT)
     lpSystemInfo->lpMaximumApplicationAddress = (PVOID) USERLIMIT;

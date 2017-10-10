@@ -153,7 +153,7 @@
 #else
 #define SYSINFO_IMAGE_BASE_AVAILABLE 0
 #ifndef ENABLE_VALGRIND
-#if defined(__IOS__)&&defined(_M_ARM64)
+#if defined(__IOS__)
 //FIXME: Disabled concurrent garbage collection, which seems to require
 // RECYCLER_WRITE_BARRIER, and that is not feasable on a 18 exabyte
 // VM address space.
@@ -161,7 +161,7 @@
 #else
 #define ENABLE_CONCURRENT_GC 1
 #define ENABLE_ALLOCATIONS_DURING_CONCURRENT_SWEEP 1 // Only takes effect when ENABLE_CONCURRENT_GC is enabled.
-#endif //defined(__IOS__)&&defined(_M_ARM64)
+#endif //defined(__IOS__)
 #else
 #define ENABLE_CONCURRENT_GC 0
 #define ENABLE_ALLOCATIONS_DURING_CONCURRENT_SWEEP 0 // Only takes effect when ENABLE_CONCURRENT_GC is enabled.

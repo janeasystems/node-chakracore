@@ -13,7 +13,7 @@ if(CC_TARGET_OS_OSX OR CC_TARGET_OS_IOS)
         -Werror"
         )
 endif()
-if (CC_TARGET_OS_IOS AND CC_TARGETS_ARM64)
+if (CC_TARGET_OS_IOS)
   # Can't run the test when cross_compiling, so the flag is set manually.
   set(CLANG_HAS_DISABLE_TAIL_CALLS_CFG 1)
 else()

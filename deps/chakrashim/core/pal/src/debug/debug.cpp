@@ -47,8 +47,8 @@ Revision History:
 #include <unistd.h>
 #elif HAVE_TTRACE // HAVE_PROCFS_CTL
 #include <sys/ttrace.h>
-#elif !(defined(__IOS__) && defined(_M_ARM64)) // HAVE_TTRACE
-//FIXME: Removed to build for iOS ARM64.
+#elif !defined(__IOS__) // HAVE_TTRACE
+//FIXME: Removed to build for iOS.
 #include <sys/ptrace.h>
 #endif  // HAVE_PROCFS_CTL
 #if HAVE_VM_READ

@@ -11,8 +11,8 @@ SET_DEFAULT_DEBUG_CHANNEL(THREAD); // some headers have code with asserts, so do
 #include "pal/debug.h"
 #include "pal/thread.hpp"
 
-#if !(defined(__IOS__) && defined(_M_ARM64))
-//FIXME: Removed to build for iOS ARM64.
+#if !defined(__IOS__)
+//FIXME: Removed to build for iOS.
 #include <sys/ptrace.h>
 #endif
 #include <errno.h>
