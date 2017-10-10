@@ -116,7 +116,7 @@ CMAKE_EXPORT_COMPILE_COMMANDS="-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
 LIBS_ONLY_BUILD=
 SHOULD_EMBED_ICU=0
 ALWAYS_YES=0
-CMAKE_SKIP_CHECK_COMPILER=""
+CMAKE_ADD_IOS_TOOLCHAIN=""
 
 if [ -f "/proc/version" ]; then
     OS_LINUX=1
@@ -289,7 +289,8 @@ while [[ $# -gt 0 ]]; do
         if [[ $_TARGET_OS =~ "ios" ]]; then
           TARGET_OS="-DCC_TARGET_OS_IOS_SH=1"
           #In order to make cmake cross compile correctly, a toolchain file is referenced.
-          CMAKE_SKIP_CHECK_COMPILER="-DCMAKE_TOOLCHAIN_FILE=ios.cmake"
+          CMAKE_ADD_IOS_TOOLCHAIN="-DCMAKE_TOOLCHAIN_FILE=ios.cmake"
+
         fi
         ;;
 
@@ -593,12 +594,20 @@ if [[ $ARCH =~ "x86" ]]; then
 elif [[ $ARCH =~ "arm64" ]]; then
     ARCH="-DCC_TARGETS_ARM64_SH=1"
     echo "Compile Target : arm64"
+    if [[ $TARGET_OS =~ "-DCC_TARGET_OS_IOS_SH=1" ]]; then
+        #Pass IOS_PLATFORM to ios.cmake
+        CMAKE_ADD_IOS_TOOLCHAIN="$CMAKE_ADD_IOS_TOOLCHAIN -DIOS_PLATFORM=OS"
+    fi
 elif [[ $ARCH =~ "arm" ]]; then
     ARCH="-DCC_TARGETS_ARM_SH=1"
     echo "Compile Target : arm"
 elif [[ $ARCH =~ "amd64" ]]; then
     ARCH="-DCC_TARGETS_AMD64_SH=1"
     echo "Compile Target : amd64"
+    if [[ $TARGET_OS =~ "-DCC_TARGET_OS_IOS_SH=1" ]]; then
+        #Pass IOS_PLATFORM to ios.cmake
+        CMAKE_ADD_IOS_TOOLCHAIN="$CMAKE_ADD_IOS_TOOLCHAIN -DIOS_PLATFORM=SIMULATOR64"
+    fi
 else
     echo "Compile Target : System Default"
 fi
@@ -608,7 +617,7 @@ echo $EXTRA_DEFINES
 cmake $CMAKE_GEN $CC_PREFIX $ICU_PATH $LTO $STATIC_LIBRARY $ARCH $TARGET_OS \
     $ENABLE_CC_XPLAT_TRACE $EXTRA_DEFINES -DCMAKE_BUILD_TYPE=$BUILD_TYPE $SANITIZE $NO_JIT $INTL_ICU \
     $WITHOUT_FEATURES $WB_FLAG $WB_ARGS $CMAKE_EXPORT_COMPILE_COMMANDS $LIBS_ONLY_BUILD\
-    $CMAKE_SKIP_CHECK_COMPILER $VALGRIND $BUILD_RELATIVE_DIRECTORY
+    $CMAKE_ADD_IOS_TOOLCHAIN $VALGRIND $BUILD_RELATIVE_DIRECTORY
 
 _RET=$?
 if [[ $? == 0 ]]; then
