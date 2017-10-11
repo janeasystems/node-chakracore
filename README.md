@@ -149,13 +149,14 @@ git checkout mobile-master
 ./tools/ios_framework_prepare.sh
 ```
 
-That will configure `gyp` to build Node.js and its dependencies as static libraries for iOS on the arm64 architecture, using the `ChakraCore` engine with JIT disabled. It will then copy those libraries into `tools/ios-framework/bin/`, to be used by the `nodeLib.xcodeproj` Xcode project.
+That will configure `gyp` to build Node.js and its dependencies as static libraries for iOS on the arm64 and x64 architectures, using the `ChakraCore` engine with JIT disabled. The script copies those libraries to `tools/ios-framework/bin/arm64` and `tools/ios-framework/bin/x64`, respectively. It also merges them into static libraries that contain strips for both architectures, which will be placed in `tools/ios-framework/bin` and used by the `tools/ios-framework/nodeLib.xcodeproj` Xcode project.
 
-#### 3) Build the iOS Framework:
+The helper script builds the `tools/ios-framework/nodeLib.xcodeproj` Xcode project into three frameworks:
+  - The framework to run on iOS devices: `out_ios/Release-iphoneos/libnode.framework`
+  - The framework to run on the iOS simulator: `out_ios/Release-iphonesimulator/libnode.framework`
+  - The universal framework, that runs on iOS devices and simulators: `out_ios/Release-universal/libnode.framework`
 
-Open `tools/ios-framework/nodeLib.xcodeproj` in Xcode and build the project with either a physical device or `Generic iOS Device` selected as the build target. After building, you can check on Xcode's project browser that a `libnode.framework` file is created in `nodeLib/Products/`.
-
-Control click `libnode.framework` in Xcode and select `Show in finder`. This will show you where the built `libnode.framework` is. It should be inside a folder named `Debug-iphoneos`.
+While the universal framework is useful for faster Application development, due to supporting both iOS devices and simulators, frameworks containing simulator strips will not be accepted on the App Store. Before trying to submit your application, it would be advisable to use the `Release-iphoneos/libnode.framework` in your submission archive or strip the x64 slices from the universal framework's binaries before submitting.
 
 ## Contributing
 Please see the [CONTRIBUTING](https://github.com/janeasystems/nodejs-mobile/blob/mobile-master/doc_mobile/CONTRIBUTING.md) file in the `doc_mobile` folder in this source distribution.
