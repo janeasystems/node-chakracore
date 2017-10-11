@@ -1,9 +1,14 @@
 Node.js for Mobile Apps
 ====================================
 
-This is the main repository for the [Node.js for Mobile Apps](https://code.janeasystems.com/nodejs-mobile) project.
+This is the main repository for [Node.js for Mobile Apps](https://code.janeasystems.com/nodejs-mobile), a toolkit for integrating Node.js into mobile applications.
 
-It is the central repository for reporting **all issues** related to the Node.js for Mobile Apps project, including issues pertaining to the React Native and Cordova plugins. 
+## Resources for Newcomers
+* [Website](https://code.janeasystems.com/nodejs-mobile)
+* [Mailing list](https://groups.google.com/group/nodejs-mobile)
+* [Gitter channel](https://gitter.im/nodejs-mobile/community)
+
+This is the central repository for reporting **all issues** related to the Node.js for Mobile Apps project, including issues pertaining to the React Native and Cordova plugins. 
 
 The core library source code is in this repo. If you are looking for the *source code* for the plugins, you can find it at:
 
@@ -11,7 +16,7 @@ The core library source code is in this repo. If you are looking for the *source
 * [Cordova plugin source repo](https://github.com/janeasystems/nodejs-mobile-cordova)
 
 
-##### Project Goals
+## Project Goals
 
 1. To provide the fixes necessary to run Node.js on mobile operating systems.
 1. To investigate which features need to be added to Node.js in order to make it a useful tool for mobile app development.
