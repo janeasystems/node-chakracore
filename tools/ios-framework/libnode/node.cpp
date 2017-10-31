@@ -1,4 +1,6 @@
 
+#import "Node.h"
+
 namespace node {
     int Start(int argc, char *argv[]);
 } // namespace node
