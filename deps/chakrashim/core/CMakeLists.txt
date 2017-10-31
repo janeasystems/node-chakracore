@@ -250,25 +250,22 @@ elseif(CC_TARGET_OS_OSX OR CC_TARGET_OS_IOS)
         )
         set(IOS_DEPLOYMENT_TARGET "$ENV{IPHONEOS_DEPLOYMENT_TARGET} CC")
         if (${IOS_DEPLOYMENT_TARGET} STREQUAL " CC")
-          set(IOS_DEPLOYMENT_TARGET "11.0")
+          set(IOS_DEPLOYMENT_TARGET "9.0")
           if(CC_TARGETS_ARM64)
             #iOS Physical device.
-            add_compile_options(-miphoneos-version-min=11.0)
+            add_compile_options(-miphoneos-version-min=9.0)
             # isysroot is the result from running -> xcodebuild -version -sdk iphoneos Path
             add_compile_options(-isysroot ${CMAKE_IOS_SDK_ROOT})
-            set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} \
-              -miphoneos-version-min=11.0 -fembed-bitcode -std=gnu99 -isysroot ${CMAKE_IOS_SDK_ROOT}")
-            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} \
-              -miphoneos-version-min=11.0 -fembed-bitcode -std=gnu++11 -isysroot ${CMAKE_IOS_SDK_ROOT}")
+            add_compile_options(-fembed-bitcode)
+            set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99")
+            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
           else()
             #iOS Simulator.
-            add_compile_options(-mios-simulator-version-min=11.0)
+            add_compile_options(-mios-simulator-version-min=9.0)
             # isysroot is the result from running -> xcodebuild -version -sdk iphonesimulator Path
             add_compile_options(-isysroot ${CMAKE_IOS_SDK_ROOT})
-            set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} \
-              -mios-simulator-version-min=11.0 -std=gnu99 -isysroot ${CMAKE_IOS_SDK_ROOT}")
-            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} \
-              -mios-simulator-version-min=11.0 -std=gnu++11 -isysroot ${CMAKE_IOS_SDK_ROOT}")
+            set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99")
+            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
           endif()
         else()
           set(IOS_DEPLOYMENT_TARGET "$ENV{IPHONEOS_DEPLOYMENT_TARGET}")

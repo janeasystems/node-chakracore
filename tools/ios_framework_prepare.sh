@@ -18,7 +18,7 @@ make clean
 TARGET_LIBRARY_PATH='tools/ios-framework/bin/arm64'
 
 ./configure --dest-os=ios --dest-cpu=arm64 --without-chakra-jit --enable-static --with-intl=none --openssl-no-asm
-make
+make -j8
 
 mkdir -p $TARGET_LIBRARY_PATH
 
@@ -37,7 +37,7 @@ make clean
 TARGET_LIBRARY_PATH='tools/ios-framework/bin/x64'
 
 ./configure --dest-os=ios --dest-cpu=x64 --without-chakra-jit --enable-static --with-intl=none --openssl-no-asm
-make
+make -j8
 
 mkdir -p $TARGET_LIBRARY_PATH
 
@@ -71,10 +71,10 @@ cd ../
 
 NODELIB_PROJECT_PATH='tools/ios-framework'
 
-xcodebuild build -project $NODELIB_PROJECT_PATH/nodeLib.xcodeproj -target "libnode" -configuration Release -arch arm64 -sdk "iphoneos" SYMROOT=$FRAMEWORK_TARGET_DIR
-xcodebuild build -project $NODELIB_PROJECT_PATH/nodeLib.xcodeproj -target "libnode" -configuration Release -arch x86_64 -sdk "iphonesimulator" SYMROOT=$FRAMEWORK_TARGET_DIR
+xcodebuild build -project $NODELIB_PROJECT_PATH/nodeLib.xcodeproj -target "Node" -configuration Release -arch arm64 -sdk "iphoneos" SYMROOT=$FRAMEWORK_TARGET_DIR
+xcodebuild build -project $NODELIB_PROJECT_PATH/nodeLib.xcodeproj -target "Node" -configuration Release -arch x86_64 -sdk "iphonesimulator" SYMROOT=$FRAMEWORK_TARGET_DIR
 cp -RL $FRAMEWORK_TARGET_DIR/Release-iphoneos $FRAMEWORK_TARGET_DIR/Release-universal
-lipo -create $FRAMEWORK_TARGET_DIR/Release-iphoneos/libnode.framework/libnode $FRAMEWORK_TARGET_DIR/Release-iphonesimulator/libnode.framework/libnode -output $FRAMEWORK_TARGET_DIR/Release-universal/libnode.framework/libnode
+lipo -create $FRAMEWORK_TARGET_DIR/Release-iphoneos/Node.framework/Node $FRAMEWORK_TARGET_DIR/Release-iphonesimulator/Node.framework/Node -output $FRAMEWORK_TARGET_DIR/Release-universal/Node.framework/Node
 
 echo "Frameworks built to $FRAMEWORK_TARGET_DIR"
 
