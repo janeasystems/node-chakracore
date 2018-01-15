@@ -186,7 +186,12 @@ int uv_cpu_info(uv_cpu_info_t** cpu_infos, int* count) {
 
   size = sizeof(cpuspeed);
   if (sysctlbyname("hw.cpufrequency", &cpuspeed, &size, NULL, 0))
+#if defined(TARGET_OS_IPHONE) && TARGET_OS_IPHONE
+    // You can't get cpu frequency on iOS devices. Defaults to 0.
+    cpuspeed = 0;
+#else
     return -errno;
+#endif
 
   if (host_processor_info(mach_host_self(), PROCESSOR_CPU_LOAD_INFO, &numcpus,
                           (processor_info_array_t*)&info,
