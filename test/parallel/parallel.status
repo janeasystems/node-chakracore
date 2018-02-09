@@ -106,3 +106,219 @@ test-repl-sigint-nested-eval : PASS,FLAKY
 [$jsEngine==chakracore && $system==macos]
 test-repl-sigint-nested-eval : PASS,FLAKY
 test-vm-sigint : PASS,FLAKY
+
+[$system==android]
+#
+# Tests that require child process that currently is not supported on mobile
+#
+test-benchmark-*: SKIP
+test-child-process-* : SKIP
+test-cluster-* : SKIP
+test-domain-no-error-handler-abort-on-uncaught-* : SKIP
+test-cli-* : SKIP
+test-common : SKIP
+test-cwd-enoent : SKIP
+test-cwd-enoent-preload : SKIP
+test-cwd-enoent-repl : SKIP
+test-debug-usage : SKIP
+test-debugger-pid : SKIP
+test-dgram-cluster-bind-error : SKIP
+test-dgram-cluster-close-during-bind : SKIP
+test-dgram-exclusive-implicit-bind : SKIP
+test-dgram-multicast-set-interface-lo : SKIP
+test-domain-abort-on-uncaught : SKIP
+test-domain-nested-throw : SKIP
+test-domain-throw-error-then-throw-from-uncaught-exception-handler : SKIP
+test-domain-top-level-error-handler-throw : SKIP
+test-domain-uncaught-exception : SKIP
+test-domain-with-abort-on-uncaught-exception : SKIP
+test-env-var-no-warnings : SKIP
+test-error-reporting : SKIP
+test-eval : SKIP
+test-eval-require : SKIP
+test-force-repl : SKIP
+test-force-repl-with-eval : SKIP
+test-fs-readfile-error : SKIP
+test-fs-readfile-pipe : SKIP
+test-fs-readfile-pipe-large : SKIP
+test-fs-readfilesync-pipe-large : SKIP
+test-fs-syncwritestream : SKIP
+test-handle-wrap-isrefed : SKIP
+test-http-chunk-problem : SKIP
+test-http-full-response : SKIP
+test-http-pipeline-flood : SKIP
+test-http-server-stale-close : SKIP
+test-inspector-invalid-args : SKIP
+test-inspector-open : SKIP
+test-listen-fd-cluster : SKIP
+test-listen-fd-detached : SKIP
+test-listen-fd-detached-inherit : SKIP
+test-listen-fd-server : SKIP
+test-module-loading-globalpaths : SKIP
+test-net-listen-exclusive-random-ports : SKIP
+test-net-server-connections-child-null : SKIP
+test-npm-install : SKIP
+test-openssl-ca-options : SKIP
+test-os-homedir-no-envvar : SKIP
+test-pending-deprecation : SKIP
+test-pipe-file-to-http : SKIP
+test-pipe-head : SKIP
+test-process-argv-0 : SKIP
+test-process-env : SKIP
+test-process-exec-argv : SKIP
+test-process-execpath : SKIP
+test-process-exit-code : SKIP
+test-process-external-stdio-close : SKIP
+test-process-external-stdio-close-spawn : SKIP
+test-process-getgroups : SKIP
+test-process-kill-null : SKIP
+test-process-raw-debug : SKIP
+test-process-redirect-warnings : SKIP
+test-process-redirect-warnings-env : SKIP
+test-process-remove-all-signal-listeners : SKIP
+test-regress-GH-12371 : SKIP
+test-regress-GH-1899 : SKIP
+test-regress-GH-3238 : SKIP
+test-regress-GH-9819 : SKIP
+test-regress-GH-node-9326 : SKIP
+test-repl-harmony : SKIP
+test-repl-require-context : SKIP
+test-repl-setprompt : SKIP
+test-repl-sigint : SKIP
+test-repl-sigint-nested-eval : SKIP
+test-repl-syntax-error-handling : SKIP
+test-repl-unexpected-token-recoverable : SKIP
+test-require-symlink : SKIP
+test-setproctitle : SKIP
+test-sigint-infinite-loop : SKIP
+test-signal-unregister : SKIP
+test-stdin-child-proc : SKIP
+test-stdin-from-file : SKIP
+test-stdin-pipe-large : SKIP
+test-stdin-pipe-resume : SKIP
+test-stdin-script-child : SKIP
+test-stdin-script-child-option : SKIP
+test-stdio-closed : SKIP
+test-stdout-cannot-be-closed-child-process-pipe : SKIP
+test-stdout-close-catch : SKIP
+test-stdout-close-unref : SKIP
+test-stdout-stderr-reading : SKIP
+test-stdout-to-file : SKIP
+test-sync-io-option : SKIP
+test-tls-cipher-list : SKIP
+test-tls-env-bad-extra-ca : SKIP
+test-tls-env-extra-ca : SKIP
+test-tls-ticket-cluster : SKIP
+test-trace-event : SKIP
+test-util-callbackify : SKIP
+test-vm-sigint : SKIP
+test-vm-sigint-existing-handler : SKIP
+test-vm-syntax-error-message : SKIP
+test-vm-syntax-error-stderr : SKIP
+test-process-wrap : SKIP
+#
+# Tests that depend on FIPS OpenSSL that is not available on mobile
+#
+test-dsa-fips-invalid-key : SKIP
+#
+# Tests that require OpenSSL CLI that is not available on mobile
+#
+test-crypto-sign-verify : SKIP
+test-https-foafssl : SKIP
+test-tls-alert : SKIP
+test-tls-alert-handling : SKIP
+test-tls-cnnic-whitelist : SKIP
+test-tls-dhe : SKIP
+test-tls-ecdh : SKIP
+test-tls-ecdh-auto : SKIP
+test-tls-ecdh-disable : SKIP
+test-tls-ecdh-multiple : SKIP
+test-tls-no-sslv3 : SKIP
+test-tls-ocsp-callback : SKIP
+test-tls-securepair-server : SKIP
+test-tls-server-verify : SKIP
+test-tls-session-cache : SKIP
+test-tls-set-ciphers : SKIP
+#
+# Tests that require the inspector, not included in the build
+#
+test-warn-sigprof : SKIP
+#
+# Tests that require Intl, not included in the build
+#
+test-icu-data-dir : SKIP
+test-icu-punycode : SKIP
+test-icu-stringwidth : SKIP
+test-icu-transcode : SKIP
+test-intl : SKIP
+test-intl-v8BreakIterator : SKIP
+test-url-domain-ascii-unicode : SKIP
+test-url-format-whatwg : SKIP
+test-whatwg-url-constructor : SKIP
+test-whatwg-url-domainto : SKIP
+test-whatwg-url-historical : SKIP
+test-whatwg-url-inspect : SKIP
+test-whatwg-url-origin : SKIP
+test-whatwg-url-parsing : SKIP
+test-whatwg-url-setters : SKIP
+test-whatwg-url-toascii : SKIP
+#
+# Tests that run on Windows only
+#
+test-fs-long-path : SKIP
+test-fs-realpath-on-substed-drive : SKIP
+test-fs-write-file-invalid-path : SKIP
+test-regress-GH-3542 : SKIP
+test-require-long-path : SKIP
+test-spawn-cmd-named-pipe : SKIP
+test-vm-cached-data : SKIP
+test-windows-abort-exitcode : SKIP
+#
+# Tests that run on Windows and OSX only
+#
+test-fs-watch-recursive : SKIP
+#
+# Tests that run on Linux only
+#
+test-fs-read-file-sync-hostname : SKIP
+test-fs-readdir-ucs2 : SKIP
+#
+# Tests that try to access the 'test' parent folder, currently not supported on mobile
+#
+test-process-config : SKIP
+test-buffer-bindingobj-no-zerofill : SKIP
+#
+# Tests using APIs not available on Android
+#
+test-fs-access : SKIP # process.getuid is not a function
+test-process-geteuid-getegid : SKIP
+test-process-setuid-setgid : SKIP
+#
+# FAILING TESTS NOT INVESTIGATED YET
+#
+test-crypto : SKIP # NOT INVESTIGATED YET
+test-crypto-binary-default : SKIP # NOT INVESTIGATED YET
+test-crypto-cipheriv-decipheriv : SKIP # NOT INVESTIGATED YET
+test-crypto-fips : SKIP # NOT INVESTIGATED YET
+test-crypto-rsa-dsa : SKIP # NOT INVESTIGATED YET
+test-fs-link : SKIP # NOT INVESTIGATED YET
+test-fs-realpath-pipe : SKIP # NOT INVESTIGATED YET
+test-fs-stat : SKIP # NOT INVESTIGATED YET
+test-http2-respond-file-error-dir : SKIP # NOT INVESTIGATED YET
+test-https-pfx : SKIP # NOT INVESTIGATED YET
+test-internal-util-decorate-error-stack : SKIP # NOT INVESTIGATED YET
+test-listen-fd-ebadf : SKIP # NOT INVESTIGATED YET
+test-module-require-depth : SKIP # NOT INVESTIGATED YET
+test-net-connect-options-fd : SKIP # NOT INVESTIGATED YET
+test-net-pipe-connect-errors : SKIP # NOT INVESTIGATED YET
+test-os : SKIP # NOT INVESTIGATED YET
+test-preload : SKIP # NOT INVESTIGATED YET
+test-process-exit-recursive : SKIP # NOT INVESTIGATED YET
+test-regression-object-prototype : SKIP # NOT INVESTIGATED YET
+test-signal-handler : SKIP # NOT INVESTIGATED YET
+test-tls-multi-pfx : SKIP # NOT INVESTIGATED YET
+test-tls-passphrase : SKIP # NOT INVESTIGATED YET
+test-tls-pfx-gh-5100-regr : SKIP # NOT INVESTIGATED YET
+test-v8-serdes : SKIP # NOT INVESTIGATED YET
+test-vm-debug-context : SKIP # NOT INVESTIGATED YET
+test-zlib-from-concatenated-gzip : SKIP # NOT INVESTIGATED YET

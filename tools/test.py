@@ -1665,6 +1665,9 @@ def Main():
           'arch': vmArch,
           'jsengine': jsEngine,
         }
+        # If arch is android, system is android as well.
+        if arch.lower() == "android":
+          env['system'] = "android"
         test_list = root.ListTests([], path, context, arch, mode, jsEngine)
         unclassified_tests += test_list
         (cases, unused_rules, all_outcomes) = (

@@ -29,7 +29,8 @@ const path = require('path');
 const expectFilePath = common.isWindows ||
                        common.isLinux ||
                        common.isOSX ||
-                       common.isAIX;
+                       common.isAIX ||
+                       common.isAndroid;
 
 const testDir = common.tmpDir;
 

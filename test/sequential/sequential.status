@@ -25,3 +25,29 @@ test-async-wrap-getasyncid : PASS,FLAKY
 
 [$jsEngine==chakracore && $system==linux]
 test-child-process-pass-fd : PASS,FLAKY
+
+[$system==android]
+#
+# Tests that use child process that currently is not supported on mobile
+#
+test-benchmark-* : SKIP
+test-child-* : SKIP
+test-cluster-inspect-brk : SKIP
+test-debug-prompt : SKIP
+test-debugger-debug-brk : SKIP
+test-debugger-repeat-last : SKIP
+test-deprecation-flags : SKIP
+test-dgram-bind-shared-ports : SKIP
+test-init : SKIP
+test-module-loading : SKIP
+test-net-GH-5504 : SKIP
+test-net-listen-shared-ports : SKIP
+test-next-tick-error-spin : SKIP
+test-process-warnings : SKIP
+test-regress-GH-1697 : SKIP
+test-regress-GH-1726 : SKIP
+test-regress-GH-4015 : SKIP
+test-repl-timeout-throw : SKIP
+test-stream2-stderr-sync : SKIP
+test-util-debug : SKIP
+test-vm-timeout-rethrow : SKIP

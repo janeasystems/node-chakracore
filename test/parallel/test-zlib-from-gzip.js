@@ -35,7 +35,13 @@ const gunzip = zlib.createGunzip();
 
 const fs = require('fs');
 
-const fixture = fixtures.path('person.jpg.gz');
+// 'person.jpg.gz' has been renamed to 'person.jpg.gz.bin' to handle a special
+// case on Android: '.gz' file are added to the APK assets without the '.gz'
+// extension. That causes two problems:
+// - during build time, it generates a conflict with 'person.jpg'.
+// - at runtime there isn't a 'filename.jpg.gz' resource to load even if the
+//   file is renamed but still has the '.gz' extension.
+const fixture = fixtures.path('person.jpg.gz.bin');
 const unzippedFixture = fixtures.path('person.jpg');
 const outputFile = path.resolve(common.tmpDir, 'person.jpg');
 const expect = fs.readFileSync(unzippedFixture);

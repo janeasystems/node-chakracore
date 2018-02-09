@@ -1,4 +1,4 @@
-prefix message
+prefix internet
 
 # To mark a test as flaky, list the test name in the appropriate section
 # below, without ".js", followed by ": PASS,FLAKY". Example:
@@ -17,13 +17,10 @@ prefix message
 [$system==freebsd]
 
 [$jsEngine==chakracore]
-console_low_stack_space : PASS,FLAKY
-stack_overflow_async : PASS,FLAKY
-unhandled_promise_trace_warnings : PASS,FLAKY
 
 [$system==android]
 #
 # Tests that use child process that currently is not supported on mobile
 #
-eval_messages : SKIP
-stdin_messages : SKIP
+test-dgram-broadcast-multi-process : SKIP
+test-dgram-multicast-multi-process : SKIP

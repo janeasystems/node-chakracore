@@ -23,3 +23,18 @@ test-promise : PASS,FLAKY
 test-promise.chain-promise-before-init-hooks : PASS,FLAKY
 test-promise.promise-before-init-hooks : PASS,FLAKY
 
+[$system==android]
+#
+# Tests that use child process that currently is not supported on mobile
+#
+test-callback-error : SKIP
+test-embedder.api.async-resource-no-type : SKIP
+test-embedder.api.async-resource.after-on-destroyed : SKIP
+test-embedder.api.async-resource.before-on-destroyed : SKIP
+test-embedder.api.async-resource.improper-order : SKIP
+test-embedder.api.async-resource.improper-unwind : SKIP
+test-emit-before-after : SKIP
+test-graph.pipe : SKIP
+test-graph.signal : SKIP
+test-pipewrap : SKIP
+test-signalwrap : SKIP

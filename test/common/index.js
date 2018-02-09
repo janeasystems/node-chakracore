@@ -53,6 +53,7 @@ exports.isSunOS = process.platform === 'sunos';
 exports.isFreeBSD = process.platform === 'freebsd';
 exports.isLinux = process.platform === 'linux';
 exports.isOSX = process.platform === 'darwin';
+exports.isAndroid = process.platform === 'android';
 
 exports.enoughTestMem = os.totalmem() > 0x40000000; /* 1 Gb */
 const cpus = os.cpus();
