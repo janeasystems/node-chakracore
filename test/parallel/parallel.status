@@ -20,84 +20,99 @@ test-npm-install:      PASS,FLAKY
 [$system==freebsd]
 
 [$jsEngine==chakracore]
-test-assert-checktag : PASS,FLAKY
-test-async-hooks-disable-during-promise : PASS,FLAKY
-test-async-hooks-enable-during-promise : PASS,FLAKY
-test-async-hooks-promise : PASS,FLAKY
-test-async-hooks-promise-enable-disable : PASS,FLAKY
-test-async-hooks-promise-triggerid : PASS,FLAKY
-test-async-wrap-getasyncid : PASS,FLAKY
-test-async-wrap-promise-after-enabled : PASS,FLAKY
-test-buffer-bindingobj-no-zerofill : PASS,FLAKY
-test-buffer-sharedarraybuffer : PASS,FLAKY
-test-child-process-promisified : PASS,FLAKY
-test-cluster-inspector-debug-port : PASS,FLAKY
+test-assert-checktag : SKIP
+test-async-hooks-disable-during-promise : SKIP
+test-async-hooks-enable-during-promise : SKIP
+test-async-hooks-promise : SKIP
+test-async-hooks-promise-enable-disable : SKIP
+test-async-hooks-promise-triggerid : SKIP
+test-async-wrap-promise-after-enabled : SKIP
+test-buffer-bindingobj-no-zerofill : SKIP
+test-buffer-sharedarraybuffer : SKIP
+test-child-process-promisified : SKIP
 test-crypto-dh : PASS,FLAKY
-test-crypto-dh-leak : PASS,FLAKY
-test-debugger-repeat-last : PASS,FLAKY
-test-domain-no-error-handler-abort-on-uncaught-0 : PASS,FLAKY
-test-domain-no-error-handler-abort-on-uncaught-1 : PASS,FLAKY
-test-domain-no-error-handler-abort-on-uncaught-2 : PASS,FLAKY
-test-domain-no-error-handler-abort-on-uncaught-3 : PASS,FLAKY
-test-domain-no-error-handler-abort-on-uncaught-4 : PASS,FLAKY
-test-domain-no-error-handler-abort-on-uncaught-5 : PASS,FLAKY
-test-domain-no-error-handler-abort-on-uncaught-6 : PASS,FLAKY
-test-domain-no-error-handler-abort-on-uncaught-7 : PASS,FLAKY
-test-domain-no-error-handler-abort-on-uncaught-8 : PASS,FLAKY
-test-domain-no-error-handler-abort-on-uncaught-9 : PASS,FLAKY
-test-domain-promise : PASS,FLAKY
-test-fs-promisified : PASS,FLAKY
-test-fs-stat : PASS,FLAKY
+test-crypto-dh-leak : SKIP
+test-domain-no-error-handler-abort-on-uncaught-0 : SKIP
+test-domain-no-error-handler-abort-on-uncaught-1 : SKIP
+test-domain-no-error-handler-abort-on-uncaught-2 : SKIP
+test-domain-no-error-handler-abort-on-uncaught-3 : SKIP
+test-domain-no-error-handler-abort-on-uncaught-4 : SKIP
+test-domain-no-error-handler-abort-on-uncaught-5 : SKIP
+test-domain-no-error-handler-abort-on-uncaught-6 : SKIP
+test-domain-no-error-handler-abort-on-uncaught-7 : SKIP
+test-domain-no-error-handler-abort-on-uncaught-8 : SKIP
+test-domain-no-error-handler-abort-on-uncaught-9 : SKIP
+test-domain-promise : SKIP
+test-fs-promisified : SKIP
+test-fs-stat : SKIP
 test-http-pipeline-flood : PASS,FLAKY
-test-http-same-map : PASS,FLAKY
-test-http2-client-promisify-connect : PASS,FLAKY
-test-intl : PASS,FLAKY
-test-intl-no-icu-data : PASS,FLAKY
-test-memory-usage : PASS,FLAKY
-test-performance-function : PASS,FLAKY
-test-performance-gc : PASS,FLAKY
-test-process-env-symbols : PASS,FLAKY
-test-promise-internal-creation : PASS,FLAKY
-test-promises-unhandled-rejections : PASS,FLAKY
-test-promises-unhandled-symbol-rejections : PASS,FLAKY
-test-promises-warning-on-unhandled-rejection : PASS,FLAKY
+test-http-same-map : SKIP
+test-http2-client-promisify-connect : SKIP
+test-intl : SKIP
+test-memory-usage : SKIP
+test-performance-function : SKIP
+test-performance-gc : SKIP
+test-process-env-symbols : SKIP
+test-promise-internal-creation : SKIP
+test-promises-unhandled-rejections : SKIP
+test-promises-unhandled-symbol-rejections : SKIP
+test-promises-warning-on-unhandled-rejection : SKIP
 test-regress-GH-12371 : PASS,FLAKY
-test-repl : PASS,FLAKY
-test-repl-mode : PASS,FLAKY
+test-repl : SKIP
+test-repl-mode : SKIP
 test-repl-sigint : PASS,FLAKY
-test-repl-tab-complete : PASS,FLAKY
-test-string-decoder : PASS,FLAKY
-test-timers-promisified : PASS,FLAKY
+test-repl-tab-complete : SKIP
+test-string-decoder : SKIP
+test-timers-promisified : SKIP
 test-trace-event : PASS,FLAKY
 test-url-domain-ascii-unicode : PASS,FLAKY
-test-util : PASS,FLAKY
-test-util-format-shared-arraybuffer : PASS,FLAKY
-test-util-inspect-proxy : PASS,FLAKY
-test-util-promisify : PASS,FLAKY
-test-v8-serdes : PASS,FLAKY
-test-v8-serdes-sharedarraybuffer : PASS,FLAKY
-test-vm-cached-data : PASS,FLAKY
-test-vm-context : PASS,FLAKY
-test-vm-create-and-run-in-context : PASS,FLAKY
-test-vm-debug-context : PASS,FLAKY
-test-vm-global-identity : PASS,FLAKY
-test-vm-low-stack-space : PASS,FLAKY
-test-vm-preserves-property : PASS,FLAKY
-test-vm-property-not-on-sandbox : PASS,FLAKY
+test-util : SKIP
+test-util-format-shared-arraybuffer : SKIP
+test-util-inspect-proxy : SKIP
+test-util-promisify : SKIP
+test-v8-serdes : SKIP
+test-v8-serdes-sharedarraybuffer : SKIP
+test-vm-cached-data : SKIP
+test-vm-context : SKIP
+test-vm-create-and-run-in-context : SKIP
+test-vm-debug-context : SKIP
+test-vm-global-identity : SKIP
+test-vm-low-stack-space : SKIP
+test-vm-preserves-property : SKIP
+test-vm-property-not-on-sandbox : SKIP
 test-vm-sigint : PASS,FLAKY
 test-vm-sigint-existing-handler : PASS,FLAKY
-test-vm-strict-mode : PASS,FLAKY
-test-vm-timeout : PASS,FLAKY
-test-zlib-convenience-methods : PASS,FLAKY
+test-vm-strict-mode : SKIP
+test-vm-timeout : SKIP
+test-zlib-convenience-methods : SKIP
+
+# These tests are disabled for chakra engine because they depend
+# on v8-option --abort-on-uncaught-exception
+test-domain-abort-on-uncaught : SKIP
+test-domain-throw-error-then-throw-from-uncaught-exception-handler : SKIP
+test-domain-with-abort-on-uncaught-exception : SKIP
+
+# These tests are disabled for chakra engine because they depend
+# on v8 flag --allow_natives_syntax
+test-v8-flags : SKIP
+test-v8-version-tag : SKIP
+
+# This test is disabled for chakra engine because it depends
+# on v8-option --max-old-space-size
+test-windows-failed-heap-allocation : SKIP
+
+# This test is disabled for chakra engine because debugger
+# support is not implemented yet.
+test-preload : SKIP
 
 
 [$jsEngine==chakracore && $arch==x64]
-test-buffer-includes : PASS,FLAKY
-test-buffer-indexof : PASS,FLAKY
+test-buffer-includes : SKIP
+test-buffer-indexof : SKIP
 test-buffer-slow : PASS,FLAKY
 
 [$jsEngine==chakracore && $system==win32]
-test-module-loading-globalpaths : PASS,FLAKY
+test-module-loading-globalpaths : SKIP
 test-http-client-get-url : PASS,FLAKY
 
 [$jsEngine==chakracore && $system==linux]
@@ -322,3 +337,392 @@ test-tls-pfx-gh-5100-regr : SKIP # NOT INVESTIGATED YET
 test-v8-serdes : SKIP # NOT INVESTIGATED YET
 test-vm-debug-context : SKIP # NOT INVESTIGATED YET
 test-zlib-from-concatenated-gzip : SKIP # NOT INVESTIGATED YET
+
+[$system==ios]
+#
+# Tests that try to spawn processes, but fail with spawn EPERM
+# These tests are expected to always fail, since iOS won't allow spawning new processes
+#
+test-benchmark-arrays : SKIP
+test-benchmark-assert : SKIP
+test-benchmark-cluster : SKIP
+test-benchmark-crypto : SKIP
+test-benchmark-dns : SKIP
+test-benchmark-domain : SKIP
+test-benchmark-events : SKIP
+test-benchmark-os : SKIP
+test-benchmark-path : SKIP
+test-benchmark-process : SKIP
+test-benchmark-timers : SKIP
+test-child-process-bad-stdio : SKIP
+test-child-process-buffering : SKIP
+test-child-process-constructor : SKIP
+test-child-process-cwd : SKIP
+test-child-process-default-options : SKIP
+test-child-process-detached : SKIP
+test-child-process-disconnect : SKIP
+test-child-process-double-pipe : SKIP
+test-child-process-env : SKIP
+test-child-process-exec-cwd : SKIP
+test-child-process-exec-encoding : SKIP
+test-child-process-exec-env : SKIP
+test-child-process-exec-error : SKIP
+test-child-process-exec-kill-throws : SKIP
+test-child-process-exec-maxBuffer : SKIP
+test-child-process-exec-stdout-stderr-data-string : SKIP
+test-child-process-exec-timeout : SKIP
+test-child-process-execfile : SKIP
+test-child-process-exit-code : SKIP
+test-child-process-flush-stdio : SKIP
+test-child-process-fork : SKIP
+test-child-process-fork-and-spawn : SKIP
+test-child-process-fork-close : SKIP
+test-child-process-fork-dgram : SKIP
+test-child-process-fork-exec-argv : SKIP
+test-child-process-fork-exec-path : SKIP
+test-child-process-fork-net : SKIP
+test-child-process-fork-net2 : SKIP
+test-child-process-fork-no-shell : SKIP
+test-child-process-fork-ref : SKIP
+test-child-process-fork-ref2 : SKIP
+test-child-process-fork-regr-gh-2847 : SKIP
+test-child-process-fork-stdio : SKIP
+test-child-process-fork-stdio-string-variant : SKIP
+test-child-process-fork3 : SKIP
+test-child-process-internal : SKIP
+test-child-process-ipc : SKIP
+test-child-process-ipc-next-tick : SKIP
+test-child-process-kill : SKIP
+test-child-process-promisified : SKIP
+test-child-process-recv-handle : SKIP
+test-child-process-send-after-close : SKIP
+test-child-process-send-cb : SKIP
+test-child-process-send-keep-open : SKIP
+test-child-process-send-returns-boolean : SKIP
+test-child-process-send-type-error : SKIP
+test-child-process-send-utf8 : SKIP
+test-child-process-set-blocking : SKIP
+test-child-process-silent : SKIP
+test-child-process-spawn-error : SKIP
+test-child-process-spawn-shell : SKIP
+test-child-process-stdin : SKIP
+test-child-process-stdin-ipc : SKIP
+test-child-process-stdio : SKIP
+test-child-process-stdio-big-write-end : SKIP
+test-child-process-stdio-inherit : SKIP
+test-child-process-stdout-flush : SKIP
+test-child-process-stdout-flush-exit : SKIP
+test-cli-eval : SKIP
+test-cli-eval-event : SKIP
+test-cli-node-options : SKIP
+test-cli-node-options-disallowed : SKIP
+test-cli-syntax : SKIP
+test-cluster-basic : SKIP
+test-cluster-bind-privileged-port : SKIP
+test-cluster-bind-twice : SKIP
+test-cluster-dgram-1 : SKIP
+test-cluster-dgram-2 : SKIP
+test-cluster-dgram-reuse : SKIP
+test-cluster-disconnect : SKIP
+test-cluster-disconnect-before-exit : SKIP
+test-cluster-disconnect-idle-worker : SKIP
+test-cluster-disconnect-leak : SKIP
+test-cluster-disconnect-race : SKIP
+test-cluster-disconnect-suicide-race : SKIP
+test-cluster-disconnect-unshared-tcp : SKIP
+test-cluster-disconnect-unshared-udp : SKIP
+test-cluster-eaccess : SKIP
+test-cluster-eaddrinuse : SKIP
+test-cluster-fork-env : SKIP
+test-cluster-fork-stdio : SKIP
+test-cluster-http-pipe : SKIP
+test-cluster-invalid-message : SKIP
+test-cluster-ipc-throw : SKIP
+test-cluster-listening-port : SKIP
+test-cluster-master-error : SKIP
+test-cluster-master-kill : SKIP
+test-cluster-message : SKIP
+test-cluster-net-listen : SKIP
+test-cluster-net-send : SKIP
+test-cluster-process-disconnect : SKIP
+test-cluster-rr-domain-listen : SKIP
+test-cluster-rr-ref : SKIP
+test-cluster-send-deadlock : SKIP
+test-cluster-send-handle-large-payload : SKIP
+test-cluster-send-handle-twice : SKIP
+test-cluster-send-socket-to-worker-http-server : SKIP
+test-cluster-server-restart-none : SKIP
+test-cluster-server-restart-rr : SKIP
+test-cluster-setup-master : SKIP
+test-cluster-shared-handle-bind-error : SKIP
+test-cluster-shared-handle-bind-privileged-port : SKIP
+test-cluster-shared-leak : SKIP
+test-cluster-uncaught-exception : SKIP
+test-cluster-worker-death : SKIP
+test-cluster-worker-destroy : SKIP
+test-cluster-worker-disconnect : SKIP
+test-cluster-worker-disconnect-on-error : SKIP
+test-cluster-worker-events : SKIP
+test-cluster-worker-exit : SKIP
+test-cluster-worker-forced-exit : SKIP
+test-cluster-worker-init : SKIP
+test-cluster-worker-isconnected : SKIP
+test-cluster-worker-isdead : SKIP
+test-cluster-worker-kill : SKIP
+test-cluster-worker-no-exit : SKIP
+test-cluster-worker-wait-server-close : SKIP
+test-common : SKIP
+test-cwd-enoent : SKIP
+test-cwd-enoent-preload : SKIP
+test-cwd-enoent-repl : SKIP
+test-debug-usage : SKIP
+test-dgram-cluster-bind-error : SKIP
+test-dgram-cluster-close-during-bind : SKIP
+test-dgram-exclusive-implicit-bind : SKIP
+test-dgram-multicast-set-interface-lo : SKIP
+test-domain-nested-throw : SKIP
+test-domain-no-error-handler-abort-on-uncaught-0 : SKIP
+test-domain-no-error-handler-abort-on-uncaught-1 : SKIP
+test-domain-no-error-handler-abort-on-uncaught-2 : SKIP
+test-domain-no-error-handler-abort-on-uncaught-3 : SKIP
+test-domain-no-error-handler-abort-on-uncaught-4 : SKIP
+test-domain-no-error-handler-abort-on-uncaught-5 : SKIP
+test-domain-no-error-handler-abort-on-uncaught-6 : SKIP
+test-domain-no-error-handler-abort-on-uncaught-7 : SKIP
+test-domain-no-error-handler-abort-on-uncaught-8 : SKIP
+test-domain-no-error-handler-abort-on-uncaught-9 : SKIP
+test-domain-top-level-error-handler-throw : SKIP
+test-domain-uncaught-exception : SKIP
+test-env-var-no-warnings : SKIP
+test-error-reporting : SKIP
+test-eval : SKIP
+test-eval-require : SKIP
+test-force-repl : SKIP
+test-force-repl-with-eval : SKIP
+test-fs-readfile-error : SKIP
+test-fs-readfile-pipe : SKIP
+test-fs-readfile-pipe-large : SKIP
+test-fs-readfilesync-pipe-large : SKIP
+test-fs-syncwritestream : SKIP
+test-handle-wrap-isrefed : SKIP
+test-http-chunk-problem : SKIP
+test-http-full-response : SKIP
+test-http-pipeline-flood : SKIP
+test-http-server-stale-close : SKIP
+test-listen-fd-cluster : SKIP
+test-listen-fd-detached : SKIP
+test-listen-fd-detached-inherit : SKIP
+test-listen-fd-server : SKIP
+test-net-listen-exclusive-random-ports : SKIP
+test-net-server-connections-child-null : SKIP
+test-npm-install : SKIP
+test-pending-deprecation : SKIP
+test-pipe-file-to-http : SKIP
+test-pipe-head : SKIP
+test-process-argv-0 : SKIP
+test-process-env : SKIP
+test-process-exec-argv : SKIP
+test-process-exit-code : SKIP
+test-process-external-stdio-close : SKIP
+test-process-external-stdio-close-spawn : SKIP
+test-process-getgroups : SKIP
+test-process-kill-null : SKIP
+test-process-raw-debug : SKIP
+test-process-redirect-warnings : SKIP
+test-process-redirect-warnings-env : SKIP
+test-process-remove-all-signal-listeners : SKIP
+test-regress-GH-12371 : SKIP
+test-regress-GH-1899 : SKIP
+test-regress-GH-3238 : SKIP
+test-regress-GH-9819 : SKIP
+test-regress-GH-node-9326 : SKIP
+test-repl-harmony : SKIP
+test-repl-require-context : SKIP
+test-repl-setprompt : SKIP
+test-repl-sigint : SKIP
+test-repl-sigint-nested-eval : SKIP
+test-repl-syntax-error-handling : SKIP
+test-repl-unexpected-token-recoverable : SKIP
+test-setproctitle : SKIP
+test-sigint-infinite-loop : SKIP
+test-signal-unregister : SKIP
+test-stdin-child-proc : SKIP
+test-stdin-from-file : SKIP
+test-stdin-pipe-large : SKIP
+test-stdin-pipe-resume : SKIP
+test-stdin-script-child : SKIP
+test-stdin-script-child-option : SKIP
+test-stdio-closed : SKIP
+test-stdout-cannot-be-closed-child-process-pipe : SKIP
+test-stdout-close-catch : SKIP
+test-stdout-close-unref : SKIP
+test-stdout-stderr-reading : SKIP
+test-stdout-to-file : SKIP
+test-sync-io-option : SKIP
+test-tls-cipher-list : SKIP
+test-tls-env-bad-extra-ca : SKIP
+test-tls-env-extra-ca : SKIP
+test-tls-ticket-cluster : SKIP
+test-trace-event : SKIP
+test-util-callbackify : SKIP
+test-vm-sigint : SKIP
+test-vm-sigint-existing-handler : SKIP
+test-vm-syntax-error-message : SKIP
+test-vm-syntax-error-stderr : SKIP
+#
+# Tests that also try to spawn processes, but don't fail right away
+#
+test-child-process-spawn-argv0 : SKIP
+test-child-process-spawn-typeerror : SKIP
+test-child-process-spawnsync : SKIP
+test-child-process-spawnsync-env : SKIP
+test-child-process-spawnsync-input : SKIP
+test-child-process-spawnsync-kill-signal : SKIP
+test-child-process-spawnsync-maxbuf : SKIP
+test-child-process-spawnsync-shell : SKIP
+test-child-process-spawnsync-timeout : SKIP
+test-child-process-spawnsync-validation-errors : SKIP
+test-cli-bad-options : SKIP
+test-crypto-fips : SKIP
+test-fs-realpath-pipe : SKIP
+test-internal-util-decorate-error-stack : SKIP
+test-module-loading-globalpaths : SKIP
+test-openssl-ca-options : SKIP
+test-os-homedir-no-envvar : SKIP
+test-process-execpath : SKIP
+test-process-wrap : SKIP
+test-require-symlink : SKIP
+#
+# FAILING tests due to running out of stack space.
+#
+test-buffer-includes : SKIP
+test-buffer-indexof : SKIP
+#
+# FAILING TEST
+# length of a kMaxLength (should be 2GB) new SlowBuffer is a non-positive number. Check it
+# Assert fails: 'Array length must be a finite positive integer' === 'Invalid offset/length when creating typed array'
+#
+test-buffer-slow : SKIP
+#
+# FAILING crypto tests.
+#
+test-crypto : SKIP #Wrong exception in assert
+test-crypto-binary-default : SKIP #Wrong exception in assert
+test-crypto-cipheriv-decipheriv : SKIP #digital envelope bad decrypt
+test-crypto-dh : SKIP # error:05067003:Diffie-Hellman routines:GENERATE_KEY:BN lib
+test-crypto-rsa-dsa : SKIP #digital envelope bad decrypt
+test-https-pfx : SKIP #bad decrypt
+test-tls-multi-pfx : SKIP #bad decrypt
+test-tls-passphrase : SKIP #digital envelope bad decrypt
+test-tls-pfx-gh-5100-regr : SKIP #bad decrypt
+#
+# FAILING tests with a libkernel stack trace.
+#
+test-fs-options-immutable : SKIP #signal SIGABRT
+test-fs-watch-enoent : SKIP #signal SIGABRT
+test-signal-handler : SKIP #signal SIGHUP
+test-util-sigint-watchdog : SKIP #signal SIGINT
+#
+# FAILING tests due to timeout.
+#
+test-fs-watch-encoding : SKIP
+#
+# FAILING test with listen EADDRINUSE.
+#
+test-http-client-abort-unix-socket : SKIP
+test-http-client-pipe-end : SKIP
+test-http-client-response-domain : SKIP
+test-http-unix-socket : SKIP
+test-https-unix-socket-self-signed : SKIP
+test-net-connect-options-fd : SKIP
+test-net-connect-options-path : SKIP
+test-net-pingpong : SKIP
+test-net-pipe-connect-errors : SKIP
+test-net-server-listen-handle : SKIP
+test-net-server-listen-path : SKIP
+test-pipe-address : SKIP
+test-pipe-stream : SKIP
+test-pipe-unref : SKIP
+test-pipe-writev : SKIP
+test-tls-connect-pipe : SKIP
+test-tls-net-connect-prefer-path : SKIP
+test-tls-wrap-econnreset-pipe : SKIP
+#
+# FAILING test because it tries to access config.gypi from the node build process
+#
+test-process-config : SKIP
+#
+# FAILING test on unicode URL IDNA encoding. www.xn--ffchen-9ta.com is expected but www.xn--ffchen-vna.com
+#
+test-url-parse-format : SKIP
+#
+# Tests that depend on FIPS OpenSSL that is not available on mobile
+#
+test-dsa-fips-invalid-key : SKIP
+#
+# Tests that require OpenSSL CLI that is not available on mobile
+#
+test-crypto-sign-verify : SKIP
+test-https-foafssl : SKIP
+test-tls-alert : SKIP
+test-tls-alert-handling : SKIP
+test-tls-cnnic-whitelist : SKIP
+test-tls-dhe : SKIP
+test-tls-ecdh : SKIP
+test-tls-ecdh-auto : SKIP
+test-tls-ecdh-disable : SKIP
+test-tls-ecdh-multiple : SKIP
+test-tls-no-sslv3 : SKIP
+test-tls-ocsp-callback : SKIP
+test-tls-securepair-server : SKIP
+test-tls-server-verify : SKIP
+test-tls-session-cache : SKIP
+test-tls-set-ciphers : SKIP
+#
+# Tests that require the inspector, not included in the build
+#
+test-debugger-pid : SKIP
+test-inspector-invalid-args : SKIP
+test-inspector-open : SKIP
+test-warn-sigprof : SKIP
+#
+# Tests that require MultiLocalhost
+#
+test-http-localaddress : SKIP
+test-https-localaddress : SKIP
+#
+# Tests that require Intl, not included in the build
+#
+test-icu-data-dir : SKIP
+test-icu-punycode : SKIP
+test-icu-stringwidth : SKIP
+test-icu-transcode : SKIP
+test-intl-v8BreakIterator : SKIP
+test-url-format-whatwg : SKIP
+test-whatwg-url-constructor : SKIP
+test-whatwg-url-domainto : SKIP
+test-whatwg-url-historical : SKIP
+test-whatwg-url-inspect : SKIP
+test-whatwg-url-origin : SKIP
+test-whatwg-url-parsing : SKIP
+test-whatwg-url-setters : SKIP
+test-whatwg-url-toascii : SKIP
+#
+# Tests that run on Windows only
+#
+test-fs-long-path : SKIP
+test-fs-realpath-on-substed-drive : SKIP
+test-fs-write-file-invalid-path : SKIP
+test-regress-GH-3542 : SKIP
+test-require-long-path : SKIP
+test-spawn-cmd-named-pipe : SKIP
+test-windows-abort-exitcode : SKIP
+#
+# Tests that run on Windows and OSX only
+#
+test-fs-watch-recursive : SKIP
+#
+# These that run on Linux only
+#
+test-fs-read-file-sync-hostname : SKIP
+test-fs-readdir-ucs2 : SKIP

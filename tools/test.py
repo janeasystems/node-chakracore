@@ -1668,6 +1668,9 @@ def Main():
         # If arch is android, system is android as well.
         if arch.lower() == "android":
           env['system'] = "android"
+        # If arch is ios, system is iOS as well.
+        elif arch.lower() == "ios":
+          env['system'] = "ios"
         test_list = root.ListTests([], path, context, arch, mode, jsEngine)
         unclassified_tests += test_list
         (cases, unused_rules, all_outcomes) = (

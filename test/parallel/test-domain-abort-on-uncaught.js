@@ -10,12 +10,6 @@ const assert = require('assert');
 const domain = require('domain');
 const child_process = require('child_process');
 
-if (common.isChakraEngine) {
-  common.skip('This test is disabled for chakra engine because it depends ' +
-              'on v8-option --abort-on-uncaught-exception');
-  return;
-}
-
 const tests = [
   function nextTick() {
     const d = domain.create();

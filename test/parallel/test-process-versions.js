@@ -5,7 +5,7 @@ const assert = require('assert');
 const expected_keys = ['ares', 'http_parser', 'modules', 'node',
                        'uv', 'zlib', 'nghttp2'];
 
-if (common.isAndroid) {
+if (common.isAndroid || common.isIOS) {
   expected_keys.push('mobile');
 }
 expected_keys.push(process.jsEngine);

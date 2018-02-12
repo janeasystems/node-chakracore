@@ -19,5 +19,5 @@ prefix addons-napi
 [$system==aix]
 
 [$jsEngine==chakracore]
-test_env_sharing/test : PASS,FLAKY
+test_env_sharing/test : SKIP
 test_general/test : PASS,FLAKY

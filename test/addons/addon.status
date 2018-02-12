@@ -19,7 +19,7 @@ prefix addons
 [$system==aix]
 
 [$jsEngine==chakracore]
-async-hooks-promise/test : PASS,FLAKY
-new-target/test : PASS,FLAKY
+async-hooks-promise/test : SKIP
+new-target/test : SKIP
 callback-scope/test : PASS,FLAKY
-callback-scope/test-resolve-async : PASS,FLAKY
+callback-scope/test-resolve-async : SKIP

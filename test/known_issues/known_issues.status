@@ -21,7 +21,7 @@ test-cluster-disconnect-handles: SKIP
 [$system==aix]
 
 [$jsEngine==chakracore]
-test-vm-attributes-property-not-on-sandbox : PASS,FLAKY
-test-vm-data-property-writable : PASS,FLAKY
-test-vm-inherited_properties : PASS,FLAKY
-test-vm-strict-mode : PASS,FLAKY
+test-vm-attributes-property-not-on-sandbox : SKIP
+test-vm-data-property-writable : SKIP
+test-vm-inherited_properties : SKIP
+test-vm-strict-mode : SKIP

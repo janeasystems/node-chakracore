@@ -21,7 +21,7 @@ prefix sequential
 [$jsEngine==chakracore]
 test-vm-timeout-rethrow : PASS,FLAKY
 test-benchmark-child-process : PASS,FLAKY
-test-async-wrap-getasyncid : PASS,FLAKY
+test-async-wrap-getasyncid : SKIP
 
 [$jsEngine==chakracore && $system==linux]
 test-child-process-pass-fd : PASS,FLAKY
@@ -51,3 +51,45 @@ test-repl-timeout-throw : SKIP
 test-stream2-stderr-sync : SKIP
 test-util-debug : SKIP
 test-vm-timeout-rethrow : SKIP
+
+[$system==ios]
+#
+# Tests that try to spawn processes, but fail with spawn EPERM
+# These tests are expected to always fail, since iOS won't allow spawning new processes
+#
+test-benchmark-buffer : SKIP
+test-benchmark-child-process: SKIP
+test-benchmark-http : SKIP
+test-benchmark-net : SKIP
+test-child-process-fork-getconnections : SKIP
+test-child-process-pass-fd : SKIP
+test-init : SKIP
+test-net-GH-5504 : SKIP
+test-net-listen-shared-ports : SKIP
+test-next-tick-error-spin : SKIP
+test-process-warnings : SKIP
+test-regress-GH-1697 : SKIP
+test-regress-GH-1726 : SKIP
+test-regress-GH-4015 : SKIP
+test-repl-timeout-throw : SKIP
+test-stream2-stderr-sync : SKIP
+test-util-debug : SKIP
+test-vm-timeout-rethrow : SKIP
+#
+# Tests that try to spawn a shell process, but fail with EPERM
+#
+test-child-process-emfile : SKIP
+test-child-process-execsync : SKIP
+test-deprecation-flags : SKIP
+test-dgram-bind-shared-ports : SKIP
+#
+# Tests that fail with a libkernel stack trace.
+#
+test-fs-watch : SKIP #signal SIGABRT
+#
+# Tests that require the inspector, not included in the build
+#
+test-cluster-inspect-brk : SKIP
+test-debug-prompt : SKIP
+test-debugger-debug-brk : SKIP
+test-debugger-repeat-last : SKIP

@@ -19,9 +19,13 @@ prefix async-hooks
 [$system==freebsd]
 
 [$jsEngine==chakracore]
-test-promise : PASS,FLAKY
-test-promise.chain-promise-before-init-hooks : PASS,FLAKY
-test-promise.promise-before-init-hooks : PASS,FLAKY
+test-promise : SKIP
+test-promise.chain-promise-before-init-hooks : SKIP
+test-promise.promise-before-init-hooks : SKIP
+
+# This test is disabled for chakra engine because it depends
+# on v8-option --abort-on-uncaught-exception
+test-callback-error : SKIP
 
 [$system==android]
 #
@@ -38,3 +42,35 @@ test-graph.pipe : SKIP
 test-graph.signal : SKIP
 test-pipewrap : SKIP
 test-signalwrap : SKIP
+
+[$system==ios]
+#
+# Tests that try to spawn processes, but fail with spawn EPERM
+# These tests are expected to always fail, since iOS won't allow spawning new processes
+#
+test-embedder.api.async-resource-no-type : SKIP
+test-embedder.api.async-resource.after-on-destroyed : SKIP
+test-embedder.api.async-resource.before-on-destroyed : SKIP
+test-embedder.api.async-resource.improper-order : SKIP
+test-embedder.api.async-resource.improper-unwind : SKIP
+test-graph.pipe : SKIP
+test-graph.signal : SKIP
+test-pipewrap : SKIP
+test-signalwrap : SKIP
+#
+# Tests that also try to spawn processes, but don't fail right away
+#
+test-emit-before-after : SKIP
+#
+# FAILING test with a libkernel stack trace.
+#
+test-fseventwrap : SKIP #signal SIGABRT
+#
+# FAILING test with listen EADDRINUSE.
+#
+test-graph.pipeconnect : SKIP
+test-pipeconnectwrap : SKIP
+#
+# FAILING test that expects to have an activity of type TTYWRAP, but it doesn't.
+#
+test-ttywrap.writestream : SKIP

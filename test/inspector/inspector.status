@@ -23,3 +23,8 @@ test-contexts : PASS,FLAKY # https://github.com/nodejs/node-chakracore/issues/36
 test-off-with-session-then-on : PASS,FLAKY
 test-stop-profile-after-done : PASS,FLAKY
 test-scriptparsed-context : PASS,FLAKY
+
+[$system==ios]
+#These tests try to spawn processes, but fail with spawn EPERM
+#These tests are expected to always fail, since iOS won't allow spawning new processes
+test-stops-no-file : SKIP

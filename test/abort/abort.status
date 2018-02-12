@@ -1,8 +1,8 @@
-prefix message
+prefix abort
 
 # To mark a test as flaky, list the test name in the appropriate section
 # below, without ".js", followed by ": PASS,FLAKY". Example:
-# sample-test                       : PASS,FLAKY
+# sample-test                        : PASS,FLAKY
 
 [true] # This section applies to all platforms
 
@@ -12,25 +12,25 @@ prefix message
 
 [$system==macos]
 
+[$arch==arm || $arch==arm64]
+
 [$system==solaris] # Also applies to SmartOS
 
 [$system==freebsd]
 
 [$jsEngine==chakracore]
-console_low_stack_space : SKIP
-unhandled_promise_trace_warnings : SKIP
-
-[$system==android]
-#
-# Tests that use child process that currently is not supported on mobile
-#
-eval_messages : SKIP
-stdin_messages : SKIP
+# This test is disabled for chakra engine because it depends
+# on v8-option --abort-on-uncaught-exception
+test-abort-uncaught-exception : SKIP
 
 [$system==ios]
 #
 # Tests that try to spawn processes, but fail with spawn EPERM
 # These tests are expected to always fail, since iOS won't allow spawning new processes
 #
-eval_messages : SKIP
-stdin_messages : SKIP
+test-http-parser-consume : SKIP
+test-process-abort-exitcode : SKIP
+#
+# Tests that also try to spawn processes, but don't fail right away
+#
+test-abort-backtrace : SKIP

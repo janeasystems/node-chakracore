@@ -5,10 +5,6 @@ const common = require('../common');
 if (common.isSunOS)
   common.skip('unreliable on SunOS');
 
-if (common.isChakraEngine)
-  common.skip('This test is disabled for chakra engine because debugger ' +
-              'support is not implemented yet.');
-
 const assert = require('assert');
 const path = require('path');
 const childProcess = require('child_process');
