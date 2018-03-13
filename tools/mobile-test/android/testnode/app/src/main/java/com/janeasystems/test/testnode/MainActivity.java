@@ -41,20 +41,26 @@ public class MainActivity extends Activity {
             Log.v(TAG, "COPYASSETS:PASS");
             return;
         }
+        String nodeSubstituteDir=getIntent().getStringExtra("substitutedir");
 
         if (nodeArgs.startsWith("-p")) {
             RunNode("node " + nodeArgs);
         } else {
-            final String testFolderPath = this.getBaseContext().getFilesDir().getAbsolutePath();
-            final String mainjsPath = testFolderPath + "/test/main-test.js";
+            final String testFolderPath = this.getBaseContext().getFilesDir().getAbsolutePath() + "/test/";
+            final String mainjsPath = testFolderPath + "main-test.js";
             String[] parts = nodeArgs.split(" ");
-            String newArgs = "node ";
+            String newArgs = "";
             // Node input flags go before main-test.js
-            for (int i = 0; i < (parts.length - 1); i++) {
-                newArgs += parts[i] + " ";
+            for (int i = 0; i < ( parts.length ); i++) {
+                if (nodeSubstituteDir == null) {
+                    newArgs += parts[i] + " ";
+                } else {
+                    //if there is a dir to substitute in the node arguments, do it.
+                    newArgs += parts[i].replace(nodeSubstituteDir,testFolderPath) + " ";
+                }
             }
             // Last arg is the test filename
-            newArgs += mainjsPath + " " + parts[parts.length - 1];
+            newArgs = "node -r " + mainjsPath + " " + newArgs;
             RunNode(newArgs);
         }
     }
@@ -71,16 +77,22 @@ public class MainActivity extends Activity {
         final String testFolderPath = this.getBaseContext().getFilesDir().getAbsolutePath();
         final String[] parts = args.split(" ");
 
-        new Thread(new Runnable() {
+        Thread mainNodeThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 startNodeWithArguments(
                         parts,
                         testFolderPath,
                         true);
-                Log.i(TAG, "RESULT:PASS");
             }
-        }).start();
+        });
+        mainNodeThread.setUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+            //If the node thread throws some exception, let's say the test fails.
+            public void uncaughtException(Thread t, Throwable e) {
+                Log.i(TAG, "RESULT:FAIL");
+            }
+        });
+        mainNodeThread.start();
     }
 
     private void copyTestAssets() throws IOException {

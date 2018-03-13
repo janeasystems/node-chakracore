@@ -1,6 +1,7 @@
 #include <jni.h>
 #include <string>
 #include <stdlib.h>
+#include <stdio.h>
 #include <pthread.h>
 #include <unistd.h>
 #include <android/log.h>
@@ -20,6 +21,14 @@ int start_redirecting_stdout_stderr();
 
 const char *TAG = "TestNode";
 JNIEnv* cacheEnvPointer = NULL;
+
+void AtExitHook()
+{
+    // If the process is exiting, we might has well say it has failed,
+    //because if it doesn't have a RESULT line before, it will block
+    //the test suite until a timeout occurs.
+    fprintf(stdout,"RESULT:FAIL\n");
+}
 
 extern "C"
 JNIEXPORT jint JNICALL
@@ -77,12 +86,18 @@ Java_nodejsmobile_test_testnode_MainActivity_startNodeWithArguments(
         }
     }
 
+    // Registers atExitHook
+    atexit(AtExitHook);
+
     int result = 0;
 
-    try {
-        result = startNode(argc, argv);
-    } catch (...) {
-        __android_log_write(ANDROID_LOG_ERROR, TAG, "Caught exception.");
+    result = startNode(argc, argv);
+
+    // Use node's return code as a PASS(==0) or a FAIL(!=0).
+    if (result==0) {
+        fprintf(stdout,"RESULT:PASS\n");
+    } else {
+        fprintf(stdout,"RESULT:FAIL\n");
     }
 
     return jint(result);
@@ -99,7 +114,8 @@ pthread_t thread_stderr;
 
 void redirect(int pipe, int log_level) {
     ssize_t redirect_size;
-    char buf[2048];
+    // Big enough buffer to not get logcat linebreaks in the middle of message tests output.
+    char buf[10240];
     while ((redirect_size = read(pipe, buf, sizeof buf - 1)) > 0) {
         // __android_log_write will add a new line anyway.
         if (buf[redirect_size - 1] == '\n')

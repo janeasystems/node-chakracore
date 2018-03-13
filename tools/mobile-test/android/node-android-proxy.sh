@@ -3,10 +3,8 @@ set -e
 
 # Use the environment variable to target a specific device
 if [ "$DEVICE_ID" = "" ]; then
-  echo "Target device: default"
   TARGET=""
 else
-  echo "Target device: $DEVICE_ID"
   TARGET="-s $DEVICE_ID"
 fi
 
@@ -15,18 +13,12 @@ adb $TARGET shell 'am force-stop nodejsmobile.test.testnode'
 # Clean the Android log
 adb $TARGET logcat -c
 
-ROOT_DIR=$(pwd)
-TEST_FOLDER="/test/"
-TEST_PATH=$ROOT_DIR$TEST_FOLDER
+TEST_PATH="$( cd "$( dirname "$0" )" && cd .. && cd .. && cd test && pwd )"
 
-# Replace '/' with '\/'
-TEST_PATH_CLEAN=${TEST_PATH//\//\\/}
+ARGS=$(echo $*)
 
-# Replace the absolute path up to '.../test/' with './'
-ARGS=$(echo $* | sed "s/$TEST_PATH_CLEAN/.\//")
-
-# Start the test app passing the test filename
-adb $TARGET shell 'am start -n nodejsmobile.test.testnode/nodejsmobile.test.testnode.MainActivity -e "nodeargs" "'$ARGS'"' > /dev/null
+# Start the test app passing the test filename and directory to substitute
+adb $TARGET shell 'am start -n nodejsmobile.test.testnode/nodejsmobile.test.testnode.MainActivity -e "nodeargs" "'$ARGS'" -e "substitutedir" "'$TEST_PATH'" ' > /dev/null
 # Wait for the test result to appear in the log
 adb $TARGET shell 'logcat -b main -v raw -s TestNode:I | (grep -q "^RESULT:" && kill -2 $(ps | grep "logcat" | sed -r "s/[[:graph:]]+[ \t]+([0-9]+).*/\1/g"))' < /dev/null
 
