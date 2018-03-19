@@ -27,8 +27,16 @@ BUILD_ARCH() {
   rm -rf android-toolchain/
   source ./android-configure "$ANDROID_NDK_PATH" $TARGET_ARCH
   make V= -j $(getconf _NPROCESSORS_ONLN)
-  mkdir -p "out_android/$TARGET_ARCH/"
-  cp "out/Release/lib.target/libnode.so" "out_android/$TARGET_ARCH/libnode.so"
+  TARGET_ARCH_FOLDER="$TARGET_ARCH"
+  if [ "$TARGET_ARCH_FOLDER" == "arm" ]; then
+    # Use the Android NDK ABI name.
+    TARGET_ARCH_FOLDER="armeabi-v7a"
+  elif [ "$TARGET_ARCH_FOLDER" == "arm64" ]; then
+    # Use the Android NDK ABI name.
+    TARGET_ARCH_FOLDER="arm64-v8a"
+  fi
+  mkdir -p "out_android/$TARGET_ARCH_FOLDER/"
+  cp "out/Release/lib.target/libnode.so" "out_android/$TARGET_ARCH_FOLDER/libnode.so"
 }
 
 if [ $# -eq 2 ]
