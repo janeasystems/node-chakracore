@@ -18,7 +18,8 @@ TEST_PATH="$( cd "$( dirname "$0" )" && cd .. && cd .. && cd test && pwd )"
 ARGS=$(echo $*)
 
 # Start the test app passing the test filename and directory to substitute
-adb $TARGET shell 'am start -n nodejsmobile.test.testnode/nodejsmobile.test.testnode.MainActivity -e "nodeargs" "'$ARGS'" -e "substitutedir" "'$TEST_PATH'" ' > /dev/null
+ADB_START_COMMAND='am start -n nodejsmobile.test.testnode/nodejsmobile.test.testnode.MainActivity -e "nodeargs" "'$ARGS'" -e "substitutedir" "'$TEST_PATH'" '
+adb $TARGET shell "$ADB_START_COMMAND" > /dev/null
 # Wait for the test result to appear in the log
 adb $TARGET shell 'logcat -b main -v raw -s TestNode:I | (grep -q "^RESULT:" && kill -2 $(ps | grep "logcat" | sed -r "s/[[:graph:]]+[ \t]+([0-9]+).*/\1/g"))' < /dev/null
 
