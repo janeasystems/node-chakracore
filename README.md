@@ -158,6 +158,9 @@ The helper script builds the `tools/ios-framework/NodeMobile.xcodeproj` Xcode pr
 
 While the universal framework is useful for faster Application development, due to supporting both iOS devices and simulators, frameworks containing simulator strips will not be accepted on the App Store. Before trying to submit your application, it would be advisable to use the `Release-iphoneos/NodeMobile.framework` in your submission archive or strip the x64 slices from the universal framework's binaries before submitting.
 
+## Running tests
+Please see the [TESTING.md](https://github.com/janeasystems/nodejs-mobile/blob/mobile-master/doc_mobile/TESTING.md) file in the `doc_mobile` folder in this source distribution.
+
 ## Contributing
 Please see the [CONTRIBUTING](https://github.com/janeasystems/nodejs-mobile/blob/mobile-master/doc_mobile/CONTRIBUTING.md) file in the `doc_mobile` folder in this source distribution.
 
