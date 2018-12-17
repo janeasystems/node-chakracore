@@ -133,6 +133,14 @@ Then, use it to install `CMake`:
 brew install cmake
 ```
 
+### Building the iOS library using CocoaPods:
+
+Add this to your `Podfile`:
+
+```ruby
+pod 'NodeMobile', :git => 'https://github.com/janeasystems/nodejs-mobile.git'
+```
+
 ### Building the iOS .framework library on macOS:
 
 #### 1) Clone this repo and check out the `mobile-master` branch:
