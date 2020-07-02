@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # In order to cross-compile node for Android using NDK, run:
-#   source android-configure <path_to_ndk> [arch]
+#   source android-configure <path_to_ndk> [arch] [targetapi]
 #
 # By running android-configure with source, will allow environment variables to
 # be persistent in current session. This is useful for installing native node
@@ -13,6 +13,12 @@ if [ -z "$2" ]; then
     ARCH=arm
 else
     ARCH="$2"
+fi
+
+if [ -z "$3" ]; then
+    TARGET_API=21
+else
+    TARGET_API="$3"
 fi
 
 CC_VER="4.9"
@@ -55,7 +61,7 @@ function make_toolchain {
         --install-dir=$TOOLCHAIN \
         --stl=libc++ \
         --force \
-        --platform=android-21
+        --platform=android-$TARGET_API
 }
 
 export TOOLCHAIN=$PWD/android-toolchain

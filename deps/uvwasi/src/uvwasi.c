@@ -29,6 +29,11 @@
 # undef POSIX_FADV_NORMAL
 #endif
 
+/* Android before API 21 does not support posix_fadvise() */
+#if defined(__BIONIC__) && __ANDROID_API__ < 21
+# undef POSIX_FADV_NORMAL
+#endif
+
 #define VALIDATE_FSTFLAGS_OR_RETURN(flags)                                    \
   do {                                                                        \
     if ((flags) & ~(UVWASI_FILESTAT_SET_ATIM |                                \
