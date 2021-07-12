@@ -371,7 +371,7 @@ void PrintLibuvHandleInformation(uv_loop_t* loop, FILE* stream) {
 
 std::vector<std::string> NativeSymbolDebuggingContext::GetLoadedLibraries() {
   std::vector<std::string> list;
-#if defined(__linux__) || defined(__FreeBSD__) || \
+#if (defined(__linux__) && (!defined(__ANDROID_API__) || __ANDROID_API__ >= 21)) || defined(__FreeBSD__) || \
     defined(__OpenBSD__) || defined(__DragonFly__)
   dl_iterate_phdr(
       [](struct dl_phdr_info* info, size_t size, void* data) {
